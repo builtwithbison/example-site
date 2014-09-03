@@ -1,4 +1,4 @@
-# Bison Example Site
+# Bison Example Theme
 
 This demo website is an example of how you can use [Statamic](http://statamic.com) and [Bison](https://builtwithbison.com) to create a simple ecommerce website.
 
