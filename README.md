@@ -21,7 +21,7 @@ Feel free to use this as a starting point for your own site, or as a learning to
 
 ## About the site
 
-### Product types {#product-types}
+### Product types
 Products are split into separate folders to demonstrate different usage examples.
 
 * "Simple" products have either no options or they use a basic grid field to specify a single set of basic price modifiers. A single stock level can be managed for the entire product.
@@ -30,14 +30,14 @@ Products are split into separate folders to demonstrate different usage examples
 
 You can view the content md files and/or the fieldsets to get a better understanding.
 
-### Tax {#tax}
+### Tax
 The `tax_rate` has been set to 10%.  
 The donation product has been marked as 'tax free'.
 
-### Shipping {#shipping}
+### Shipping
 The shipping method is `multiple_flat_rate` with two options.  
 You can choose from the flat rates on the checkout/shipping page.
 
-### Checkout {#checkout}
+### Checkout
 The `Dummy` gateway is used for checking out.  
 If you want to use `Stripe`, there are partials in `templates/checkout_3` and `layouts/default` ready to be swapped out.
