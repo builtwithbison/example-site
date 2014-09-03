@@ -1,6 +1,6 @@
 # Bison Example Site
 
-This demo website is an example of how you can use Statamic and Bison to create a simple ecommerce website.
+This demo website is an example of how you can use [Statamic](http://statamic.com) and [Bison](https://builtwithbison.com) to create a simple ecommerce website.
 
 It definitely does _not_ show all the features of Bison. For full documentation, visit the [Bison website](https://builtwithbison.com/docs).
 
