@@ -4,7 +4,9 @@ This demo website is an example of how you can use Statamic and Bison to create 
 
 It definitely does _not_ show all the features of Bison. For full documentation, visit the [Bison website](https://builtwithbison.com/docs).
 
-Feel free to use this as a starting point for your own site, or as a learning tool. It should _not_ be used as-is.
+Feel free to use this as a starting point for your own site, or as a learning tool.  
+It should _not_ be used as-is.
+
 
 
 ## Installation
@@ -17,7 +19,14 @@ Feel free to use this as a starting point for your own site, or as a learning to
 6. Ensure `1-products`, `_content/orders` and `_discounts` are writeable.
 7. To access the CP, append `bison: true` to `_admin_nav` in `settings.yaml`.
 
----
+
+
+## Support
+
+* If there's an issue with the theme itself, please open an issue in this Github repo.
+* If you have general how-to about Bison, open a ticket in [support](http://support.builtwithbison.com).
+
+
 
 ## About the site
 
@@ -40,4 +49,4 @@ You can choose from the flat rates on the checkout/shipping page.
 
 ### Checkout
 The `Dummy` gateway is used for checking out.  
-If you want to use `Stripe`, there are partials in `templates/checkout_3` and `layouts/default` ready to be swapped out.
+If you want to use `Stripe`, there are partials in `templates/checkout_3` and `layouts/default` ready to be swapped out. You'll need to add your private API key to `bison.yaml` and your public key to the javascript partial.
