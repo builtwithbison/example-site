@@ -18,7 +18,7 @@ It should _not_ be used as-is.
 5. Replace the `_config/fieldsets` directory.
 5. Copy across `_config/routes.yaml` (or amend to the existing file).
 6. Ensure `1-products`, `_content/orders` and `_discounts` are writeable.
-7. To access the CP, append `bison: true` to `_admin_nav` in `settings.yaml`.
+7. To access Bison's CP area, append `bison: true` to `_admin_nav` in `settings.yaml`.
 
 
 
@@ -55,3 +55,6 @@ You can choose from the flat rates on the checkout/shipping page.
 ### Checkout
 The `Dummy` gateway is used for checking out.  
 If you want to use `Stripe`, there are partials in `templates/checkout_3` and `layouts/default` ready to be swapped out. You'll need to add your private API key to `bison.yaml` and your public key to the javascript partial.
+
+### Control Panel
+The orders and discounts folders have been hidden from the 'Pages' tab in the CP. You can access these through the "Store" section.
