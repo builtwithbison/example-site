@@ -34,7 +34,7 @@ It should _not_ be used as-is.
 
 <br>
 
-## About the site
+## About the theme
 
 ### Product types
 Products are split into separate folders to demonstrate different usage examples.
