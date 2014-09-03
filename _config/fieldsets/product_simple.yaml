@@ -1,0 +1,18 @@
+hide: yes
+
+include:
+  - _product_common
+
+fields:
+
+  options:
+    type: grid
+    display: Options
+    min_rows: 0
+    fields:
+      label:
+        type: text
+        display: Option Name
+      modifier:
+        type: bison_price
+        display: Price

@@ -1,0 +1,11 @@
+hide: yes
+
+include:
+  - _product_common
+
+fields:
+
+  option_config:
+    display: Options
+    type: bison_option_matrix
+    options_field: options

@@ -1,0 +1,6 @@
+hide: yes
+
+fields:
+  discount:
+    type: bison_discounts
+    display: Discount

@@ -15,6 +15,7 @@ It should _not_ be used as-is.
 2. Install a copy of Bison as per the [documentation](https://builtwithbison.com/docs/getting-started/installing-and-updating).
 3. Replace the `_content` directory.
 4. Copy across `_themes/bison_example` and change the `_theme` setting to `bison_example`.
+5. Replace the `_config/fieldsets` directory.
 5. Copy across `_config/routes.yaml` (or amend to the existing file).
 6. Ensure `1-products`, `_content/orders` and `_discounts` are writeable.
 7. To access the CP, append `bison: true` to `_admin_nav` in `settings.yaml`.

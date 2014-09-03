@@ -1,0 +1,17 @@
+hide: yes
+
+fields:
+
+  photo:
+    display: Product Photo
+    type: file
+    allowed: [png, gif, jpg, jpeg]
+    destination: assets/img
+
+  price:
+    display: Price
+    type: bison_price
+
+  tax_free:
+    display: Tax Free
+    type: checkbox

@@ -1,0 +1,4 @@
+hide: yes
+
+include:
+  - _product_common
