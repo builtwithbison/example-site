@@ -27,8 +27,11 @@ It should _not_ be used as-is.
 * If there's an issue with the theme itself, please open an issue in this Github repo.
 * If you have general how-to about Bison, open a ticket in [support](http://support.builtwithbison.com).
 
+<br>
+
 ---
----
+
+<br>
 
 ## About the site
 
