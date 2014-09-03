@@ -1,0 +1,42 @@
+{{ if segment_3 == "payment" }}
+
+	<script src="https://js.stripe.com/v2/"></script>
+	<script>
+		Stripe.setPublishableKey('YOUR_PUBLIC_KEY');
+
+		var stripeResponseHandler = function(status, response) {
+			var $form = $('#checkout-form');
+
+			if (response.error) {
+				// Show the errors on the form
+				$('#payment-errors').text(response.error.message).show();
+				$('#submit-button').prop('disabled', false);
+			} else {
+				var token = response.id;
+				$form.append($('<input type="hidden" name="token" />').val(token));
+				$form.get(0).submit();
+			}
+		};
+
+		$(function() {
+			$('#checkout-form').submit(function(e) {
+				var $form = $(this);
+				$('#submit-button').prop('disabled', true);
+				Stripe.card.createToken({
+					number: $("[data-stripe='number']").val(),
+					cvc: $("[data-stripe='cvc']").val(),
+					exp_month: $("[data-stripe='exp-month']").val(),
+					exp_year: $("[data-stripe='exp-year']").val(),
+					name: $("[name='first_name']").val() + " " + $("[name='last_name']").val(),
+					address_line1: $("[name='billing_address_1']").val(),
+					address_city: $("[name='billing_city']").val(),
+					address_state: $("[name='billing_state']").val(),
+					address_zip: $("[name='billing_zip']").val(),
+					address_country: $("[name='billing_country']").val(),
+				}, stripeResponseHandler);
+				return false;
+			});
+		});
+	</script>
+
+{{ /if }}

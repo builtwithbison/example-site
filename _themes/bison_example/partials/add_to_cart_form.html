@@ -1,0 +1,68 @@
+<div class="well add-to-cart-form">
+	<h2>Add to cart</h2>
+	<p>Choose a quantity, select your option if applicable and add it to your cart.</p>
+
+	{{ bison:add_to_cart_form }}
+
+		<div class="row">
+			<div class="form-group col-md-3">
+				<label for="quantity">Quantity</label>
+				<input type="number" name="quantity" id="quantity" class="form-control" value="1" />
+			</div>
+			<div class="form-group col-md-9">
+				<!-- If there are options, show them. -->
+				{{ if options }}
+					<label for="item-option">Option</label>
+					{{ bison:item_options product="{ url }" attr="class:form-control" }}
+						<!--
+							Complex options and regular options require different values.
+							We can check for the option matrix field by looking for `option_config`.
+						-->
+						{{ if option_config }}
+							<option value="{{ sku }}">{{ label|list }} (${{ item_price }}, {{ stock }} in stock)</option>
+						{{ else }}
+							<option value="{{ value }}">{{ label }} (${{ item_price }})</option>
+						{{ /if }}
+					{{ /bison:item_options }}
+				{{ /if }}
+			</div>
+		</div>
+
+		<!--
+			The following is an example of how you could display item options as radio buttons
+			in a more detailed table. To use it, uncomment it and remove the `select` above.
+		-->
+		<!--
+		<table class="table options-table">
+			<thead>
+				<tr>
+					<th>Option</th>
+					<th>SKU</th>
+					<th class="text-right">Modifier</th>
+					<th class="text-right">Price</th>
+					<th class="text-right">Stock</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{ bison:item_options product="{ url }" select="no" }}
+					<tr>
+						<td>
+							<label>
+								<input type="radio" name="item_option" value="{{ sku }}" />
+								{{ label|list }}
+							</label>
+						</td>
+						<td>{{ sku }}</td>
+						<td class="text-right">{{ bison:currency amount="{ modifier }" mod="yes" }}</td>
+						<td class="text-right">${{ item_price }}</td>
+						<td class="text-right">{{ stock }}</td>
+					</tr>
+				{{ /bison:item_options }}
+			</tbody>
+		</table>
+		-->
+
+		<button type="submit" class="btn btn-primary btn-lg">Add to cart</button>
+
+	{{ /bison:add_to_cart_form }}
+</div>

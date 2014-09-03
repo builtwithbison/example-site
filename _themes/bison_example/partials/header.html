@@ -1,0 +1,51 @@
+<div class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">{{ _site_name }}</a>
+		</div>
+		<div class="navbar-collapse collapse">
+
+			<ul class="nav navbar-nav">
+				{{ nav from="/" }}
+					<li{{ if is_current || is_parent }} class="active"{{ /if }}><a href="{{ url }}">{{ title }}</a></li>
+				{{ /nav }}
+			</ul>
+
+			<!--
+				If there's something in the cart:
+				* Show an item count
+				* Show the mini-cart partial
+				* Conditionally add Bootstrap's dropdown toggle code
+
+				If there's nothing in the cart, it's just a link to the /cart page.
+			-->
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown {{ if segment_1 == 'cart' }}active{{ /if }}">
+					<a href="/cart" {{ if {bison:cart_item_count} }}class="dropdown-toggle" data-toggle="dropdown"{{ /if }}>
+						Cart
+						{{ if {bison:cart_item_count} }}
+							<span class="badge">{{ bison:cart_item_count }}</span>
+						{{ /if }}
+					</a>
+					{{ if {bison:cart_item_count} }}
+						<ul class="dropdown-menu" role="menu">
+							<li class="mini-cart">
+								{{ theme:partial src="mini_cart" }}
+							</li>
+							<li class="divider"></li>
+							<li><a href="/cart">Edit Cart</a></li>
+							<li><a href="/cart/checkout">Checkout</a></li>
+						</ul>
+					{{ /if }}
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</div>

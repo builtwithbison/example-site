@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-sm-8">
+		<h1>{{ title }}</h1>
+	</div>
+	<div class="col-sm-4 text-right">
+		<!-- We don't display a price on the donation page -->
+		{{ if _folder != "products/variable" }}
+			<h2>
+				<!-- If you want to split dollars and cents, you can. If you don't need to, you can simply output `price` -->
+				${{ bison:dollars value="{ price }" }}<small>.{{ bison:cents value="{ price }" }}</small>
+			</h2>
+		{{ /if }}
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-sm-8">
+		<div class="lead">
+			{{ content }}
+		</div>
+		{{ theme:partial src="product_type_label" }}
+	</div>
+	<div class="col-sm-4">
+		<img src="{{ photo }}" alt="" class="img-responsive" />
+	</div>
+</div>
+
+<br><hr><br>
+
+{{ theme:partial src="add_to_cart_success" }}
+{{ theme:partial src="add_to_cart_errors" }}
+
+<!-- The donation product gets a different form -->
+{{ if _folder == "products/variable" }}
+	{{ theme:partial src="donation_form" }}
+{{ else }}
+	{{ theme:partial src="add_to_cart_form" }}
+{{ /if }}

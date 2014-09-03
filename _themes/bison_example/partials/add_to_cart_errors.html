@@ -1,0 +1,12 @@
+<!-- 
+	Display an error message when there's a problem adding an item to the cart.
+-->
+{{ bison:add_to_cart_errors }}
+	<div class="alert alert-danger">
+		{{ stock_errors }}
+			<b>Oops!</b><br />
+			You tried to add {{ quantity }} of {{ product }} to your cart, but we only have {{ stock }}.<br />
+			Please reduce your quantity by at least {{ difference }}.
+		{{ /stock_errors }}
+	</div>
+{{ /bison:add_to_cart_errors }}

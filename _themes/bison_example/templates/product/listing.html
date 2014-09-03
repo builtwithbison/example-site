@@ -1,0 +1,32 @@
+<h1>Products</h1>
+
+{{ theme:partial src="add_to_cart_success" }}
+{{ theme:partial src="add_to_cart_errors" }}
+
+<ul class="list-unstyled product-listing">
+
+	{{ entries:listing folder="products/*" sort_by="title" }}
+		<li>
+			<div class="row">
+				<div class="col-xs-3">
+					<a href="{{ url }}"><img src="{{ photo }}" class="img-responsive" /></a>
+				</div>
+				<div class="col-xs-9">
+					<h4><a href="{{ url }}">{{ title }}</a></h4>
+					{{ if _folder != "products/variable" }}
+						<h5 class="text-muted">${{ price }}</h5>
+					{{ /if }}
+					{{ content }}
+					<div class="row">
+						<div class="col-xs-8">
+							<a href="{{ url }}" class="btn btn-default btn-sm">View Product</a>
+						</div>
+						<div class="col-xs-4 text-right">
+							{{ theme:partial src="product_type_label" use_context="yes" }}
+						</div>
+				</div>
+			</div>
+		</li>
+	{{ /entries:listing }}
+
+</ul>

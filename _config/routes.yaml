@@ -1,0 +1,4 @@
+routes:
+  /cart/empty: utils/empty_cart
+  /cart/remove-coupon: utils/remove_coupon
+  /cart/add: utils/add_to_cart

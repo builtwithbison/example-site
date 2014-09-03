@@ -1,0 +1,35 @@
+body { line-height: 1.5; padding-top: 30px; }
+
+@media (min-width: 768px) {
+  .container { max-width: 730px; }
+}
+
+p ~ ul > li { margin-bottom: 5px; }
+
+.navbar + h1 { padding-top: 20px; }
+
+.mini-cart { padding: 3px 10px; font-size: 12px; }
+.mini-cart table { width: 100%; margin: 0; }
+.mini-cart td { white-space: nowrap; }
+.mini-cart td:last-child { padding-left: 20px; }
+.mini-cart tbody tr:first-child td { border: 0; }
+.mini-cart tfoot th { font-weight: normal; }
+.mini-cart tfoot tr:first-child td,
+.mini-cart tfoot tr:first-child th { border-top-width: 2px; }
+.mini-cart .title { padding-right: 20px; }
+
+.add-to-cart-form h2 { margin-top: 0; }
+.add-to-cart-form p { margin-bottom: 20px; }
+.options-table label { font-weight: normal; }
+
+.cart-table .checkbox { font-size: 12px; margin: 5px 0 0 0; }
+.cart-table .checkbox input { margin-top: 2px; }
+
+.product-listing h3 { margin-top: 0; }
+.product-listing li { margin-top: 30px; padding-top: 20px; border-top: 1px solid #E7E7E7; }
+
+.alert ul { padding-left: 20px; margin-top: 10px; }
+
+h3:target { background: yellow; }
+
+#payment-errors { display: none; }

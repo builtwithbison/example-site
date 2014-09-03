@@ -1,0 +1,53 @@
+<!--
+	This is an example of how you can display the cart items
+	without needing a way to edit them.
+-->
+{{ if {bison:cart_item_count} == 0 }}
+	<p>Empty</p>
+{{ else }}
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th class="text-center">Qty</th>
+				<th class="text-right">Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{ bison:cart_items }}
+				<tr>
+					<td class="title">
+						{{ title }}
+						{{ if item_option }}
+							<br /><small class="text-muted">{{ item_option }}</small>
+						{{ /if }}
+					</td>
+					<td class="text-center">{{ quantity }}</td>
+					<td class="text-right">${{ subtotal }}</td>
+				</tr>
+			{{ /bison:cart_items }}
+		</tbody>
+		<tfoot>
+			<tr class="text-muted">
+				<th colspan="2">Subtotal</th>
+				<td class="text-right">${{ bison:cart_subtotal }}</td>
+			</tr>
+			<tr class="text-muted">
+				<th colspan="2">Tax</th>
+				<td class="text-right">${{ bison:cart_tax }}</td>
+			</tr>
+			<tr class="text-muted">
+				<th colspan="2">Shipping ({{ bison:shipping_option get="label" }})</th>
+				<td class="text-right">${{ bison:cart_shipping }}</td>
+			</tr>
+			<tr class="text-muted">
+				<th colspan="2">Discount</th>
+				<td class="text-right text-danger">${{ bison:cart_discount }}</td>
+			</tr>
+			<tr>
+				<th colspan="2"><b>Total</b></th>
+				<td class="text-right"><b>${{ bison:cart_total }}</b></td>
+			</tr>
+		</tfoot>
+	</table>
+{{ /if }}

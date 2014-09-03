@@ -1,0 +1,12 @@
+<h2>Billing <small><a href="/cart/checkout">Edit</a></small></h2>
+{{ bison:customer_info }}
+<p>
+	<b>{{ first_name }} {{ last_name }}</b><br />
+	{{ email }}<br />
+	{{ if custom_data:phone_number }}Ph: {{ custom_data:phone_number }}<br />{{ /if }}
+	{{ billing_address_1 }}<br />
+	{{ if billing_address_2 }}{{ billing_address_2 }}<br />{{ /if }}
+	{{ billing_city }}, {{ billing_state }} {{ billing_zip }}<br />
+	{{ bison:country_name code="{ billing_country }" }}
+</p>
+{{ /bison:customer_info }}

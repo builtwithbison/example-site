@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>{{ _site_name }}</title>
+	{{ theme:css src="bootstrap" tag="yes" }}
+	{{ theme:css src="bison" tag="yes" }}
+</head>
+<body>
+
+	<div class="container">
+		{{ theme:partial src="header" }}
+		{{ layout_content }}
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	{{ theme:js src="bootstrap.min" tag="yes" }}
+
+	{{#
+		If you want to use Stripe, uncomment this partial.
+		{{ theme:partial src="stripe_js" }}
+	#}}
+</body>
+</html>

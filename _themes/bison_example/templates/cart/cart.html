@@ -1,0 +1,154 @@
+<h1>Cart</h1>
+
+{{ if {bison:cart_item_count} == 0 }}
+
+	<div class="alert alert-info">
+		<p>Your cart is empty.</p>
+	</div>
+
+{{ else }}
+
+	{{ bison:update_cart_form }}
+
+		{{ if first }}
+			<table class="table cart-table">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Quantity</th>
+						<th class="text-right">Price</th>
+						<th class="text-right">Subtotal</th>
+					</tr>
+				</thead>
+				<tbody>
+		{{ /if }}
+
+					<tr>
+						<td>
+							<a href="{{ url }}">{{ entry:_order_key }} / {{ title }}</a><br />
+							{{ if item_option }}<small>{{ item_option }}</small><br />{{ /if }}
+							{{ if extra }}
+								{{ extra|unordered_list }}
+							{{ /if }}
+							<div class="checkbox">
+								<label><input type="checkbox" name="remove[{{ zero_index }}]" /> Remove</label>
+							</div>
+						</td>
+						<td>
+							<input type="number" name="quantity[{{ zero_index }}]" value="{{ quantity }}" class="form-control input-sm" style="width:80px;" />
+						</td>
+						<td class="text-right">${{ price }}</td>
+						<td class="text-right">${{ subtotal }}</td>
+					</tr>
+
+		{{ if last }}
+				</tbody>
+				<tfoot>
+					<tr class="text-muted">
+						<th colspan="3" class="text-right">Subtotal</th>
+						<td class="text-right">${{ bison:cart_subtotal }}</td>
+					</tr>
+					<tr class="text-muted">
+						<th colspan="3" class="text-right">Tax</th>
+						<td class="text-right">${{ bison:cart_tax }}</td>
+					</tr>
+					<tr class="text-muted">
+						<th colspan="3" class="text-right">Shipping</th>
+						<td class="text-right">${{ bison:cart_shipping }}</td>
+					</tr>
+					<tr class="text-muted">
+						<th colspan="3" class="text-right">Discount</th>
+						<td class="text-right text-danger">${{ bison:cart_discount }}</td>
+					</tr>
+					<tr>
+						<th colspan="3" class="text-right">Total</th>
+						<td class="text-right"><b>${{ bison:cart_total }}</b></td>
+					</tr>
+				</tfoot>
+			</table>
+
+			<div class="row">
+				<div class="col-md-6">
+					<button type="submit" class="btn btn-primary">
+						<span class="glyphicon glyphicon-ok"></span> Update Cart
+					</button>
+					<a href="/cart/empty" class="btn btn-default">
+					<span class="glyphicon glyphicon-trash"></span>
+						Empty Cart
+					</a>
+				</div>
+				<div class="col-md-6 text-right">
+					<!--
+						This is a way to update the cart *and* override the 'return' parameter
+					-->
+					<button type="submit" name="hidden[return]" value="/cart/checkout" class="btn btn-success">
+						Proceed to checkout
+						<span class="glyphicon glyphicon-arrow-right"></span>
+					</button>
+					<!--
+						Otherwise, just use a regular link:
+						<a href="/cart/checkout">Proceed to checkout</a>
+					-->
+				</div>
+			</div>
+		{{ /if }}
+
+	{{ /bison:update_cart_form }}
+
+	<hr>
+
+	<div class="row">
+		<div class="col-md-6">
+
+			<h2>Discounts</h2>
+
+			{{ bison:discount_details }}
+				{{ if no_results }}
+					<p>No active discounts.</p>
+				{{ else }}
+					{{ if first }}
+						<ol>
+					{{ /if }}
+							<li>{{ title }}</li>
+					{{ if last }}
+						</ol>
+					{{ /if }}
+				{{ /if }}
+			{{ /bison:discount_details }}
+
+		</div>
+		<div class="col-md-6">
+
+			<h2>Coupons</h2>
+
+			{{ bison:coupon_response }}
+				{{ if success }}
+					<div class="alert alert-success">
+						{{ if applied }}Your coupon ({{ code }}) was applied!{{ /if }}
+						{{ if removed }}Your coupon code was removed{{ /if }}
+					</div>
+				{{ else }}
+					<div class="alert alert-danger">
+						{{ if invalid }}The code you entered ({{ code }}) doesn't exist.{{ /if }}
+						{{ if existing }}You already have a code entered. ({{ existing_code }}) Please remove the first one.{{ /if }}
+					</div>
+				{{ /if }}
+			{{ /bison:coupon_response }}
+
+			{{ bison:coupon_details }}
+				{{ if no_results }}
+					{{ bison:coupon_form attr="class:form-inline" }}
+						<div class="form-group">
+							<input type="text" name="coupon_code" class="form-control input-sm" placeholder="Coupon Code" required />
+						</div>
+						<button type="submit" class="btn btn-primary btn-sm">Apply coupon</button>
+					{{ /bison:coupon_form }}
+				{{ else }}
+					{{ title }} <code>{{ code }}</code>
+					<a href="/cart/remove-coupon" class="btn btn-danger btn-xs">Remove</a>
+				{{ /if }}
+			{{ /bison:coupon_details }}
+
+		</div>
+	</div>
+{{ /if }}

@@ -1,0 +1,25 @@
+<div class="well add-to-cart-form">
+	<h2>Donate</h2>
+	<p>Enter a price and add it to your cart.</p>
+
+	<!--
+		By adding the 'allow_user_price="yes" parameter, you are able to
+		add a 'price' field to your form.
+	-->
+	{{ bison:add_to_cart_form allow_user_price="yes" }}
+
+		<div class="row">
+			<div class="form-group col-md-3">
+				<label for="price">Amount</label>
+				<div class="input-group">
+					<span class="input-group-addon">$</span>
+					<!-- We can set the value to the price to specify a suggested donation amount. Completely optional. -->
+					<input type="number" name="price" id="price" class="form-control" value="{{ price }}" step=".01" />
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-lg">Add to cart</button>
+
+	{{ /bison:add_to_cart_form }}
+</div>

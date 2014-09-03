@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-md-7">
+
+		<h1>
+			Checkout<br />
+			<small>Payment Info</small>
+		</h1>
+
+		<br>
+
+		{{ bison:checkout_form_errors }}
+			<div class="alert alert-danger">
+				{{ if missing }}
+					<p>You are missing the following fields:</p>
+					<ul>
+						{{ missing }}
+							<li>{{ field_label }}</li>
+						{{ /missing }}
+					</ul>
+				{{ endif }}
+				{{ if gateway }}
+					<p>Your payment couldn't be processed:</p>
+					<ul>
+						{{ gateway }}
+							<li><b>{{ field }}:</b> {{ message }}</li>
+						{{ /gateway }}
+					</ul>
+				{{ /if }}
+			</div>
+		{{ /bison:checkout_form_errors }}
+
+		{{
+			bison:checkout_form
+			return   = "/cart/order-complete"
+			required = "number|cvc|expiry_month|expiry_year"
+		}}
+
+			{{ if no_results }}
+
+				<p>You can't checkout with an empty cart</p>
+
+			{{ else }}
+
+				{{ theme:partial src="checkout_form_regular" }}
+
+				{{#
+				  If you want to use Stripe, remove the partial above and replace it with this:
+					{{ theme:partial src="checkout_form_stripe" }}
+					Also, remove the 'required' parameter from the `bison:checkout_form` above.
+				#}}
+
+				<br>
+				<button type="submit" class="btn btn-success btn-lg" id="submit-button">Place Order <span class="glyphicon glyphicon-ok"></span></button>
+
+			{{ /if }}
+
+		{{ /bison:checkout_form }}
+
+	</div>
+	<div class="col-md-5">
+		<h2>Cart <small><a href="/cart">Edit</a></small></h2>
+		{{ theme:partial src="mini_cart" }}
+		{{ theme:partial src="checkout_billing" }}
+		{{ theme:partial src="checkout_shipping" }}
+	</div>
+</div>

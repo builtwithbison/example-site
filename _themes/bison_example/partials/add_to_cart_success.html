@@ -1,0 +1,10 @@
+<!--
+	Display a 'success' message when an item is added to the cart.
+-->
+{{ bison:add_to_cart_success }}
+	<div class="alert alert-success">
+		<b>Success!</b><br />
+		{{ quantity }} of <a href="{{ item:url }}" class="alert-link">{{ title }}</a> has been added to cart. 
+		Now there's {{ item:quantity }} in the cart.
+	</div>
+{{ /bison:add_to_cart_success }}

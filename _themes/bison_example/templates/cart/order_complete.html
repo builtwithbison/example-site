@@ -1,0 +1,90 @@
+{{ bison:order_details }}
+
+	{{ if no_results }}
+		
+		<div class="alert alert-danger">
+			You have not placed an order
+		</div>
+
+	{{ else }}
+
+		<h1>Order Complete</h1>
+		<p class="lead">{{ title }} on {{ order_date format="F jS, Y" }}</p>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Billing</h2>
+				<p>
+					{{ first_name }} {{ last_name }}<br />
+					{{ email }}<br />
+					{{ if custom_data:phone_number }}Ph: {{ custom_data:phone_number }}<br />{{ /if }}
+					{{ billing_address_1 }}<br />
+					{{ if billing_address2 }}{{ billing_address2 }}<br />{{ /if }}
+					{{ billing_city }}, {{ billing_state }} {{ billing_zip }}<br />
+					{{ bison:country_name code="{ billing_country }" }}<br />
+				</p>
+			</div>
+			<div class="col-md-6">
+				<h2>Shipping</h2>
+				<p>
+					{{ shipping_first_name }} {{ shipping_last_name }}<br />
+					{{ shipping_address_1 }}<br />
+					{{ if shipping_address2 }}{{ shipping_address2 }}<br />{{ /if }}
+					{{ shipping_city }}, {{ shipping_state }} {{ shipping_zip }}<br />
+					{{ bison:country_name code="{ shipping_country }" }}
+				</p>
+			</div>
+		</div>
+
+		<h2>Items</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th class="text-center">Qty</th>
+					<th class="text-right">Price</th>
+					<th class="text-right">Line Total</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{ items }}
+				<tr>
+					<td>
+						{{ title }}
+						{{ if item_option }}
+							<br /><small class="text-muted">{{ item_option }}</small>
+						{{ endif }}
+					</td>
+					<td class="text-center">{{ quantity }}</td>
+					<td class="text-right">{{ price }}</td>
+					<td class="text-right">{{ subtotal }}</td>
+				</tr>
+			{{ /items }}
+			</tbody>
+			<tfoot>
+				<tr class="text-muted">
+					<th colspan="3" class="text-right">Subtotal:</th>
+					<td colspan="2" class="text-right">${{ subtotal }}</td>
+				</tr>
+				<tr class="text-muted">
+					<th colspan="3" class="text-right">Shipping:</th>
+					<td colspan="2" class="text-right">${{ shipping }}</td>
+				</tr>
+				<tr class="text-muted">
+					<th colspan="3" class="text-right">Tax:</th>
+					<td colspan="2" class="text-right">${{ tax }}</td>
+				</tr>
+				<tr class="text-muted">
+					<th colspan="3" class="text-right">Discount:</th>
+					<td colspan="2" class="text-right text-danger">${{ discount }}</td>
+				</tr>
+				<tr>
+					<th colspan="3" class="text-right">Total:</th>
+					<td colspan="2" class="text-right">${{ total }}</td>
+				</tr>
+			</tfoot>
+		</table>
+
+	{{ /if }}
+
+{{ /bison:order_details }}
